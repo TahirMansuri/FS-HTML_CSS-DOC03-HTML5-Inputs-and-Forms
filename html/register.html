@@ -22,6 +22,7 @@
 		<div>
 			<label for="email">email input type:</label>
 			<input type="email" id="email" name="email">
+			<error-output class="email-error" for="email"></error-output>
 		</div>
 		<div>
 			<label for="url">url input type:</label>
@@ -70,6 +71,15 @@
 		salaryerror.textContent = salary.value;
 		salary.addEventListener('input',function(){
 			salaryerror.textContent = salary.value;
+		});
+
+		const email = document.querySelector('#email');
+		const emailerror = document.querySelector('.email-error');
+		email.addEventListener('input',function() {
+			let pattern = RegExp('^[a-zA-Z0-9]+([._+-][0-9A-Za-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-z]{2,4})?$');
+			if(pattern.test(email))
+				emailerror.textContent = "";
+			else emailerror.textContent = "Invalid Email ID";
 		});
 	</script>
 </body>
