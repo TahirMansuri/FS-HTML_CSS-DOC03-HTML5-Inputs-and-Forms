@@ -18,6 +18,7 @@
 		<div>
 			<label for="pwd">password input type:</label>
 			<input type="password" id="pwd" name="pwd">
+			<error-output class="pass-error" for="pwd"></error-output>
 		</div>
 		<div>
 			<label for="email">email input type:</label>
@@ -89,6 +90,14 @@
 			let pattern = RegExp('^[0-9]{2}[-]?[0-9]{10}$');
 			if(pattern.test(tel.value)) telerror.textContent = "";
 			else telerror.textContent = "Invalid Phone No.";
+		});
+
+		const password = document.querySelector('#pwd');
+		const passerror = document.querySelector('.pass-error');
+		password.addEventListener('input',function(){
+			let pattern = RegExp('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_-])[a-zA-Z0-9].{8,}$');
+			if(pattern.test(password.value)) passerror.textContent = "";
+			else passerror.textContent = "Invalid Password.";
 		});
 	</script>
 </body>
